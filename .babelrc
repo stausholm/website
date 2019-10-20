@@ -1,0 +1,16 @@
+{
+  "presets": [
+    [
+      "@babel/preset-env",
+      {
+        "useBuiltIns": "this does jack shit with parcel",
+        "corejs": "3.3",
+        "targets": [
+          "> 1%",
+          "last 2 versions",
+          "not ie <= 8"
+        ]
+      }
+    ]
+  ]
+}
