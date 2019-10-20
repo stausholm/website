@@ -1,0 +1,26 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: $font-family-base;
+  letter-spacing: .0135em;
+  -webkit-font-smoothing: antialiased;
+  overflow: visible;
+  background-color: $color-primary;
+}
+
+.content-wrapper {
+  max-width: 42rem;
+  margin: 0 auto;
+  padding: 0 $default-spacing;
+  animation: reveal .4s ease-in-out;
+}
+
+@keyframes reveal {
+  0% {opacity: 0; transform: translateY(10px);}
+  33% {opacity: 0; transform: translateY(10px);}
+  100% {opacity: 100; transform: translateY(0);}
+}

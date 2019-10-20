@@ -5,10 +5,58 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>Document</title>
+  <link href="https://fonts.googleapis.com/css?family=Share+Tech+Mono|Source+Sans+Pro:300,400,600,700" rel="stylesheet" />
 </head>
 <body>
-  <p>yo</p>
+  <header>
+    <nav class="header-nav">
+      <a href="#" title="Go home">Home</a>
+      <a href="#" title="Bigger projects">Projects</a>
+      <a href="#" title="Smaller things I've made">Shots</a>
+      <a href="#" class="active" title="Contact info">Contact</a>
+    </nav>
+  </header>
   
+  <main class="content-wrapper">
+    <div class="hero-container">
+      <h1>Home</h1>
+      <p>
+        This is a descriptive description describing the page's content
+        descriptively.
+      </p>
+      <div class="divider"></div>
+    </div>
+
+    <div class="posts"></div>
+
+    <!-- New stuff -->
+    <div class="divider-with-text">
+      More projects
+    </div>
+    <ul>
+      <li>
+        <a href="#">
+          <span>Title</span>
+          <span class="small">Subtext</span>
+          <div class="arrow-icon"></div>
+        </a>
+      </li>
+    </ul>
+  </main>
+
+  <footer>
+    <div class="content-wrapper">
+      <nav>
+        <a href="#">github</a>
+        <a href="#">codepen</a>
+        <a href="#">facebook</a>
+        <a href="#">contact (opens dropdown with phone and email)</a>
+      </nav>
+
+      <span class="small-text">Footer yo</span>
+    </div>
+  </footer>
+
   <script src="./resources/main.js"></script>
 </body>
 </html>

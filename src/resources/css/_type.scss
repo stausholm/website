@@ -1,0 +1,29 @@
+@media screen and (min-width: 768px) {
+  html {
+    font-size: 20px;
+  }
+}
+
+h1, p {
+  color: $text;
+}
+p a {
+  color: $color-secondary;
+  text-decoration: none;
+  font-size: .75rem;
+  transition: color .2s;
+}
+p a:hover {
+  color: $text;
+}
+h2, h2 a {
+  color: $color-secondary;
+  text-decoration: none;
+  transition: color .2s;
+  font-size: 1.25rem;
+  line-height: 1.35;
+
+  &:hover {
+    color: $text;
+  }
+}

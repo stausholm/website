@@ -1,7 +1,10 @@
-body {
-  background: skyblue;
+@import "css/variables";
 
-  p {
-    background: red;
-  }
-}
+@import "css/type";
+@import "css/base";
+
+// components
+@import "css/components/header";
+@import "css/components/hero";
+@import "css/components/post";
+@import "css/components/footer";
