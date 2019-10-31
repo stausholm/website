@@ -1,3 +1,58 @@
 .post {
   margin-bottom: 2rem;
+  
+  a {
+    text-decoration: none;
+    color: $color-secondary;
+    transition: color .2s;
+    display: inline-block;
+
+    &:hover {
+      color: $text;
+    }
+  }
+}
+
+
+.posts--alt {
+  margin-top: 6.5rem;
+
+  h2 {
+    margin-bottom: 2rem;
+  }
+
+  ul {
+    list-style-type: none;
+
+    li {
+      border-top: 2px solid $color-secondary;
+      
+      &:last-child {
+        border-bottom: 2px solid $color-secondary;
+      }
+
+      a {
+        color: $text;
+        padding: 1.42rem 0;
+        display: flex;
+        flex-direction: column;
+        position: relative;
+        
+        &:hover {
+          color: $color-secondary;
+        }
+        // .subtext, .arrow-icon {
+        //   opacity: .5;
+        // }
+
+        .arrow-icon {
+          position: absolute;
+          display: flex;
+          right: 0;
+          top: 50%;
+          transform: translateY(-50%);
+        }
+      }
+    }
+  }
 }

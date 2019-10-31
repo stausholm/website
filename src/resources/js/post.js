@@ -30,8 +30,10 @@ const formatLink = link => {
 const createPostMarkup = post => {
   return `
   <article class="post">
-    <h2><a href="${post.link}">${post.title}</a></h2>
-    <p><a href="${post.link}">${formatLink(post.link)}</a></p>
+    <a href="${post.link}" title="Explore ${post.title}">
+      <h2>${post.title}</h2>
+      <p aria-hidden="true" class="subtext">${formatLink(post.link)}</p>
+    </a>
     <p>${post.description}</p>
   </article>`
 }
