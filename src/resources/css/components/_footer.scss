@@ -1,94 +1,90 @@
 footer {
-  margin-top: 9rem;
+  margin-top: 13rem;
   text-align: center;
   margin-bottom: 2rem;
   font-size: .75rem;
   line-height: 1.5;
   //color: $color-secondary;
-
+  
   .small-text {
     margin-top: 2rem;
     display: block;
+    
+    p {
+      font-size: .75rem;
+  
+      .divider {
+        display: inline-block;
+        padding: 0 .5rem;
+      }
+    }
   }
 }
 
 .footer-link {
   position: relative;
-  // width: 70px;
-  // height: 70px;
   display: inline-flex;
+  width: 100%;
+  height: 250px;
+  border-radius: .3rem;
+  padding: $default-spacing;
+  margin-bottom: $default-spacing;
+  // background: $text;
+  // color: $color-primary;
+  color: $text;
+  //border: 2px solid $color-secondary;
+  overflow: hidden;
 
-  &:not(:last-child) {
-    margin-right: .5rem;
+  @media screen and (max-width: 767px) {
+    height: auto;
+    align-items: center;
+    justify-content: space-between;
   }
 
-  .circle-icon {
-    width: 70px;
-    height: 70px;
-    transition: transform .3s ease;
-    transform: rotate(-135deg);
-
+  .shadow {
+    display: block;
+    position: absolute;
+    bottom: $default-spacing;
+    left: $default-spacing;
+    width: 30px;
+    height: 30px;
+    transition: box-shadow .3s;
+    // border-radius: calc(.3rem / 1);
+    border-radius: 200px;
+    box-shadow: 0 0 0 0 rgba($color-secondary, .1), 0 0 0 30px rgba($color-secondary, .1), 0 0 0 60px rgba($color-secondary, .1), 0 0 0 90px rgba($color-secondary, .1), inset 0 0 0 60px rgba($color-secondary, .3), 0 0 0 600px rgba($color-secondary, .1);
+    
     @media screen and (max-width: 767px) {
-      width: 40px;
-      height: 40px;
+      left: auto;
+      right: $default-spacing;
+      bottom: 50%;
+      transform: translateY(50%);
     }
-    
-    g {
-      stroke-width: 1px;
-    }
-    
-    &--circle {
-      stroke: $color-secondary;
-      transition: stroke-dashoffset .3s .15s ease;
-      stroke-dasharray: 95;
-      stroke-dashoffset: 95;
-    }
-  
-    &--circle-bg {
-      stroke: $color-secondary;
-    }
-
-    &--circle-bg-2 {
-      stroke: $color-primary;
-      stroke-width: 2px;
-      transition: stroke-dashoffset .3s ease;
-      stroke-dasharray: 95;
-      stroke-dashoffset: 95;
-    }
-    
   }
-
+  
+  
   &:hover {
-    .circle-icon {
-      transform: rotate(-90deg);
-      &--circle {
-        stroke-dashoffset: 0;
-        //stroke: $text;
-      }
-      &--circle-bg-2 {
-        stroke-dashoffset: 0;
-      }
+    color: $color-secondary;
+    
+    .shadow {
+      box-shadow: 0 0 30px 0 rgba($color-secondary, .1), 0 0 0 50px rgba($color-secondary, .1), 0 0 0 90px rgba($color-secondary, .1), 0 0 0 120px rgba($color-secondary, .1), inset 0 0 0 60px rgba($color-secondary, .4), 0 0 0 600px rgba($color-secondary, .15);
     }
 
     .icon svg {
-      fill: $color-secondary;
-      transform: translate(-50%, -50%) scale(.9);
+      transform: scale(.9);
     }
   }
 
   .icon svg {
-    fill: $text;
+    fill: currentColor;
     transition: fill .3s ease, transform .2s ease;
     position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
+    bottom: $default-spacing;
+    left: $default-spacing;
     width: 30px;
     height: 30px;
 
     @media screen and (max-width: 767px) {
-      width: 24px;
-      height: 24px;
+      position: static;
     }
   }
 }

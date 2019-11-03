@@ -1,0 +1,55 @@
+.row {
+  margin-left: -$default-spacing/2;
+  margin-right: -$default-spacing/2;
+  display: flex;
+  flex-flow: row wrap;
+}
+
+.col {
+  padding-left: $default-spacing/2;
+  padding-right: $default-spacing/2;
+}
+
+.col-25 {
+  flex-basis: 25%;
+  max-width: 25%;
+}
+.col-33 {
+  flex-basis: 33%;
+  max-width: 33%;
+}
+.col-50 {
+  flex-basis: 50%;
+  max-width: 50%;
+}
+.col-66 {
+  flex-basis: 66%;
+  max-width: 66%;
+}
+.col-100 {
+  flex-basis: 100%;
+  max-width: 100%;
+}
+
+@media screen and (max-width: 767px) {
+  .col-s-25 {
+    flex-basis: 25%;
+    max-width: 25%;
+  }
+  .col-s-33 {
+    flex-basis: 33%;
+    max-width: 33%;
+  }
+  .col-s-50 {
+    flex-basis: 50%;
+    max-width: 50%;
+  }
+  .col-s-66 {
+    flex-basis: 66%;
+    max-width: 66%;
+  }
+  .col-s-100 {
+    flex-basis: 100%;
+    max-width: 100%;
+  }
+}

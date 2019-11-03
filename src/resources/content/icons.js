@@ -4,7 +4,5 @@ export default {
 </svg>`,
   codepen: ``,
   facebook: ``,
-  linkedin: ``,
-  email: ``,
-  phone: ``
+  linkedin: ``
 }
