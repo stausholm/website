@@ -1,3 +1,4 @@
+import renderMarkup from './_renderer'
 import posts from '../content/posts'
 
 const formatLink = link => {
@@ -38,21 +39,8 @@ const createPostMarkup = post => {
   </article>`
 }
 
-const generatePosts = posts => {
-  let markup = ''
-
-  posts.forEach(post => {
-    markup += createPostMarkup(post) 
-  });
-  return markup
-  //return posts.map(createPostMarkup).
-}
-
 const renderPosts = selector => {
-  const el = document.querySelector(selector)
-  if (!el) return
-
-  return el.innerHTML = generatePosts(posts)
+  renderMarkup(selector, createPostMarkup, posts)
 }
 
-module.exports = renderPosts
+export default renderPosts

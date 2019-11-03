@@ -1,10 +1,15 @@
 footer {
-  margin-top: 5rem;
+  margin-top: 9rem;
   text-align: center;
   margin-bottom: 2rem;
   font-size: .75rem;
   line-height: 1.5;
-  color: $color-secondary;
+  //color: $color-secondary;
+
+  .small-text {
+    margin-top: 2rem;
+    display: block;
+  }
 }
 
 .footer-link {
@@ -13,25 +18,42 @@ footer {
   // height: 70px;
   display: inline-flex;
 
+  &:not(:last-child) {
+    margin-right: .5rem;
+  }
+
   .circle-icon {
     width: 70px;
     height: 70px;
     transition: transform .3s ease;
     transform: rotate(-135deg);
+
+    @media screen and (max-width: 767px) {
+      width: 40px;
+      height: 40px;
+    }
     
     g {
       stroke-width: 1px;
     }
     
     &--circle {
-      stroke: $text;
-      transition: stroke-dashoffset .3s ease;
+      stroke: $color-secondary;
+      transition: stroke-dashoffset .3s .15s ease;
       stroke-dasharray: 95;
       stroke-dashoffset: 95;
     }
   
     &--circle-bg {
       stroke: $color-secondary;
+    }
+
+    &--circle-bg-2 {
+      stroke: $color-primary;
+      stroke-width: 2px;
+      transition: stroke-dashoffset .3s ease;
+      stroke-dasharray: 95;
+      stroke-dashoffset: 95;
     }
     
   }
@@ -41,23 +63,32 @@ footer {
       transform: rotate(-90deg);
       &--circle {
         stroke-dashoffset: 0;
+        //stroke: $text;
+      }
+      &--circle-bg-2 {
+        stroke-dashoffset: 0;
       }
     }
 
-    .icon {
-      fill: $text;
+    .icon svg {
+      fill: $color-secondary;
       transform: translate(-50%, -50%) scale(.9);
     }
   }
 
-  .icon {
-    fill: $color-secondary;
-    transition: fill .3s ease, transform .3s ease;
+  .icon svg {
+    fill: $text;
+    transition: fill .3s ease, transform .2s ease;
     position: absolute;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
     width: 30px;
     height: 30px;
+
+    @media screen and (max-width: 767px) {
+      width: 24px;
+      height: 24px;
+    }
   }
 }
