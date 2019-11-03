@@ -27,9 +27,10 @@ $color-secondary-light:    #faafc7;
 $color-primary:            #FCFCFD;
 $text:                     #282066;
 
+// scss variables are fallback for browsers that don't support css variables
 
 :root {
-  --color-secondary: #FF4CA8;
+  --color-secondary: 242, 27, 95;//#FF4CA8;
   --color-secondary-light: #FF4CA8;
   --color-primary: #211B3B;
   --text: #fff;

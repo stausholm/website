@@ -4,11 +4,13 @@
   a {
     text-decoration: none;
     color: $color-secondary;
+    color: rgb(var(--color-secondary));
     transition: color .2s;
     display: inline-block;
 
     &:hover {
       color: $text;
+      color: var(--text);
     }
   }
 }
@@ -16,25 +18,27 @@
 
 .posts--alt {
   margin-top: 7.5rem;
-
+  
   h2 {
     margin-bottom: 2rem;
   }
-
+  
   ul {
     list-style-type: none;
-
+    
     li {
-      // box-shadow: inset 0 -2px 0 0 $color-secondary-light;
+      transform: translateZ(0); // prevent paint storm
       border-bottom: 1px solid $color-secondary-light;
+      border-bottom: 1px solid var(--color-secondary-light);
       
       &:first-child {
-        // box-shadow: inset 0 -2px 0 0 $color-secondary-light, inset 0 2px 0 0 $color-secondary-light;
         border-top: 1px solid $color-secondary-light;
+        border-top: 1px solid var(--color-secondary-light);
       }
 
       a {
         color: $text;
+        color: var(--text);
         padding: 1.42rem 0;
         display: flex;
         justify-content: space-between;
@@ -42,6 +46,7 @@
         
         &:hover {
           color: $color-secondary;
+          color: rgb(var(--color-secondary));
 
           .headtext, .subtext {
             &::after {
@@ -79,8 +84,10 @@
             left: -$default-spacing/4;
             width: calc(100% + #{$default-spacing/2});
             height: 94%;
-            background-color: #000000;
-            opacity: .05;
+            background-color: rgb($color-secondary);
+            background-color: rgb(var(--color-secondary));
+            opacity: .25;
+            z-index: -1;
             transform: scaleX(0);
             transform-origin: bottom left;
             transition: transform 0.2s ease;
@@ -95,9 +102,6 @@
             transition: transform 0.4s ease;
           }
         }
-        // .subtext, .arrow-icon {
-        //   opacity: .5;
-        // }
 
         .arrow-icon {
           position: absolute;
@@ -120,12 +124,14 @@
             transform: translateX(-100%);
             opacity: 0;
             fill: $color-secondary;
+            fill: rgb(var(--color-secondary));
           }
           
           .inactive {
             transition: transform 0.2s ease, opacity 0.2s ease;
             transition-delay: 0.1s, 0.1s;
             fill: $color-secondary-light;
+            fill: var(--color-secondary-light);
           }
 
           &.rotate {

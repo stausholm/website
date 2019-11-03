@@ -1,9 +1,9 @@
 header {
   width: 100%;
+  animation: fade .4s ease-in-out;
 
   nav, nav a {
     display: flex;
-    //flex: 1 1 0;
     align-items: center;
   }
 
@@ -16,13 +16,17 @@ header {
     transition: background-color .2s, color .2s;
 
     background-color: $color-secondary;
+    background-color: rgb(var(--color-secondary));
     color: $color-primary;
-
+    color: var(--color-primary);
+    
     &:hover,
     &:focus,
     &.active {
       background-color: $color-primary;
+      background-color: var(--color-primary);
       color: $color-secondary;
+      color: rgb(var(--color-secondary));
     }
   }
 }

@@ -15,3 +15,4 @@ const init = () => {
 init()
 
 window.switchTheme = switchTheme
+//switchTheme('red')

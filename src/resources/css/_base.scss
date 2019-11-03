@@ -13,7 +13,9 @@ body {
   letter-spacing: .0135em;
   -webkit-font-smoothing: antialiased;
   overflow: visible;
+  transition: background-color .3s ease;
   background-color: $color-primary;
+  background-color: var(--color-primary);
 }
 
 .content-wrapper {
@@ -30,11 +32,21 @@ body {
   100% {opacity: 100; transform: translateY(0);}
 }
 
+@keyframes fade {
+  0% {opacity: 0; }
+  33% {opacity: 0; }
+  100% {opacity: 100; }
+}
+
 ::selection {
   background: $color-secondary;
+  background: rgb(var(--color-secondary));
   color: $color-primary;
+  color: var(--color-primary);
 }
 ::-moz-selection {
   background: $color-secondary;
+  background: rgb(var(--color-secondary));
   color: $color-primary;
+  color: var(--color-primary);
 }

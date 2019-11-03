@@ -6,15 +6,18 @@
 
 body {
   color: $text;
+  color: var(--text);
 }
 
 a {
   color: $color-secondary;
+  color: rgb(var(--color-secondary));
   text-decoration: none;
   transition: color .2s;
 
   &:hover {
     color: $text;
+    color: var(--text);
   }
 }
 
