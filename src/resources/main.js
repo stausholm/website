@@ -4,6 +4,8 @@ import renderPosts from './js/post'
 import renderAltPosts from './js/post-alt'
 import renderFooter from './js/footer'
 
+import switchTheme from './js/themeswitcher'
+
 const init = () => {
   renderPosts('.posts')
   renderAltPosts('.posts--alt ul')
@@ -11,3 +13,5 @@ const init = () => {
 }
 
 init()
+
+window.switchTheme = switchTheme
