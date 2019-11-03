@@ -29,3 +29,12 @@ body {
   33% {opacity: 0; transform: translateY(10px);}
   100% {opacity: 100; transform: translateY(0);}
 }
+
+::selection {
+  background: $color-secondary;
+  color: $color-primary;
+}
+::-moz-selection {
+  background: $color-secondary;
+  color: $color-primary;
+}

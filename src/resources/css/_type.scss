@@ -25,4 +25,10 @@ h2 {
 
 .subtext {
   font-size: .75rem;
+  //@extend .mono;
 }
+
+// .mono {
+//   font-family: monospace;
+//   font-weight: bold;
+// }
