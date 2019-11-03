@@ -84,7 +84,7 @@
             left: -$default-spacing/4;
             width: calc(100% + #{$default-spacing/2});
             height: 94%;
-            background-color: rgb($color-secondary);
+            background-color: $color-secondary;
             background-color: rgb(var(--color-secondary));
             opacity: .25;
             z-index: -1;
