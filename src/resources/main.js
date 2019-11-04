@@ -6,6 +6,8 @@ import renderFooter from './js/footer'
 
 import switchTheme from './js/themeswitcher'
 
+import rubberband from './js/canvas/rubberband'
+
 const init = () => {
   renderPosts('.posts')
   renderAltPosts('.posts--alt ul')
