@@ -7,6 +7,7 @@ import renderFooter from './js/footer'
 import switchTheme from './js/themeswitcher'
 
 import rubberband from './js/canvas/rubberband'
+// import blast from './js/canvas/blast'
 
 const init = () => {
   renderPosts('.posts')
