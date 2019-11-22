@@ -8,11 +8,15 @@ let rafID = null;
 const config = {
   totalPoints: 6,
   viscosity: 20,
-  mouseDist: 80,
+  mouseDist: 70,
   damping: 0.15,
-  showIndicators: true,
   // color: '#f21b5f',
-  color: `rgb(${window.getComputedStyle(document.documentElement).getPropertyValue('--color-secondary')})`
+  color: `rgb(${window.getComputedStyle(document.documentElement).getPropertyValue('--color-secondary')})`,
+
+  // DEBUG
+  showIndicators: true,
+  showMouse: true,
+  showCanvas: true
 };
 
 const DEBUG = true
@@ -33,7 +37,8 @@ let mouseX = 0,
     mouseSpeedY = 0,
     mouseOffX = -1000,
     mouseOffY = 0,
-    scrollY = 0;  
+    scrollY = 0
+    init = 0;  
 
 // Get mouse direction
 function mouseDirection(e) {
@@ -80,7 +85,7 @@ canvas.ontouchmove = function(e) {
   const rect = e.target.getBoundingClientRect();
   const x = e.targetTouches[0].clientX - rect.left;
   const y = e.targetTouches[0].clientY - rect.top;
-  //console.log(x, y, rect)
+
   if (mouseX < x)
     mouseDirectionX = 1;
   else if (mouseX > x)
@@ -99,60 +104,42 @@ canvas.ontouchmove = function(e) {
   mouseY = y;
 }
 canvas.ontouchstart = function(e) {
-  e.preventDefault();
+  // don't prevent scrolling page if touching outside line boundaries
+  const rect = e.target.getBoundingClientRect();
+  const x = e.targetTouches[0].clientX - rect.left; // TODO: x start boundaries
+  const y = e.targetTouches[0].clientY - rect.top;
+
+  const touchStartBoundaries = {
+    top: canvas.height/2 - 20,
+    bottom: canvas.height/2 + 20
+  }
+  if (y > touchStartBoundaries.top && y < touchStartBoundaries.bottom) {
+    // prevent page from scrolling
+    e.preventDefault();
+  }
 }
 canvas.ontouchend = function(e) {
   mouseLeave()
 }
 
 
+let scrolling = false
 let scrollDebounced = null
 window.addEventListener('scroll', e => {
-  // get center of canvas and assign mouseX and mouseY to it
-  // if scrolling down the page, decrease mouseY and update mouseDirectionY
-  // if scrolling up, increase mouseY and update mouseDirectionY
-  // based on scrollspeed, do same logic as mouseSpeed()
+  scrolling = true
 
   clearTimeout(scrollDebounced)
-  scrollDebounced = setTimeout(updateScroll, 50)
-
-  const center = {
-    x: canvas.width/2,
-    y: canvas.height/2
-  }
-
-  mouseX = center.x
-  mouseY = center.y
-
-  // TODO: only update mouseY if scrolling fast enough
-  if (scrollY < window.pageYOffset) {
-    mouseDirectionY = 1
-    mouseY += 40
-    // mouseY = canvas.width/2 + 40
-    console.log('++', mouseY)
-  } else if (scrollY > window.pageYOffset) {
-    console.log('-- before', mouseY)
-    mouseDirectionY = -1
-    mouseY -= 40
-    // mouseY = canvas.width/2 - 40
-    console.log('--', mouseY)
-  } else {
-    mouseDirectionY = 0
-  }
-
-  scrollY = window.pageYOffset
+  scrollDebounced = setTimeout(finishScroll, 50)
 })
 
-function updateScroll() {
-  console.log('updated')
-  mouseLeave()
+function finishScroll() {
+  scrolling = false
+  mouseY = canvas.height/2 // reset y back to 0, so we have a 0 starting point when switching scroll direction
 }
 
 
 
-/**
- * Point
- */
+
 function Point(x, y, canvas) {
   this.x = x;
   this.ix = x;
@@ -186,10 +173,6 @@ Point.prototype.move = function() {
 
 
 
-
-/**
- * Init canvas
- */
 function initCanvas() {
   cancelAnimationFrame(rafID);
 
@@ -202,8 +185,11 @@ function initCanvas() {
   const gap = (canvas.width / (config.totalPoints - 1));
   const pointY = canvas.height / 2;
 
-  for (let i = 0; i <= config.totalPoints - 1; i++)
+  for (let i = 0; i <= config.totalPoints - 1; i++) {
     points.push(new Point(i * gap, pointY, canvas));
+  }
+
+  init = 1
 
   // Start render
   renderCanvas();
@@ -214,16 +200,62 @@ function initCanvas() {
 
 
 
-
-/**
- * Render canvas
- */
 function renderCanvas() {
   // rAF
   rafID = requestAnimationFrame(renderCanvas);
 
+  //console.log('loop')
+  if (init === 1) {
+    // perform initial animation
+    console.log('init')
+
+    mouseDirectionY = 1
+    mouseY = 140
+    mouseX = canvas.width/2
+    // init = 2 // TODO: make work
+  } else if (init === 2) {
+    console.log('init2')
+    mouseLeave()
+    init = 3
+  }
+
+
   // Clear scene
   ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+  // simulate mouse movement on scroll
+  if (scrolling) {
+    const center = {
+      x: canvas.width/2,
+      y: canvas.height/2
+    }
+  
+    mouseX = center.x
+    if (mouseY === mouseOffY) {
+      // mouseLeave() has been called, so we make sure to center mouseY before adding/subtracting distance
+      mouseY = center.y
+    }
+  
+    if (scrollY < window.pageYOffset) {
+      mouseDirectionY = -1
+      if (mouseY < center.y - config.mouseDist) {
+        mouseY = center.y - config.mouseDist
+      } else {
+        mouseY -= 5
+      }
+    } else if (scrollY > window.pageYOffset) {
+      mouseDirectionY = 1
+      if (mouseY > center.y + config.mouseDist) {
+        mouseY = center.y + config.mouseDist
+      } else {
+        mouseY += 5
+      }
+    } else {
+      mouseDirectionY = 0
+    }
+
+    scrollY = window.pageYOffset
+  }
 
   // Move points
   for (let i = 0; i <= config.totalPoints - 1; i++)
@@ -246,10 +278,6 @@ function renderCanvas() {
       p.cx = p.ix;
       p.cy = p.iy;
     }
-    
-    // if (i == 2) {
-    //   console.log(p)
-    // }
 
     ctx.bezierCurveTo(p.x, p.y, p.cx, p.cy, p.cx, p.cy);
   }
@@ -263,9 +291,6 @@ function renderCanvas() {
 
 
 
-/**
- * Resize handler
- */
 function resizeHandler() {
   initCanvas();
 }
@@ -290,6 +315,8 @@ if(DEBUG) {
   window.addEventListener('load', () => {
     const gui = new dat.GUI();
     gui.add(config, 'showIndicators');
+    gui.add(config, 'showMouse');
+    gui.add(config, 'showCanvas');
     const controller = gui.add(config, 'totalPoints', 2, 20).step(1);
     gui.add(config, 'viscosity', 10, 500);
     gui.add(config, 'mouseDist', 20, 400);
@@ -323,6 +350,15 @@ if(DEBUG) {
         ctx.rect(p.cx - 1, p.cy - 1, 2, 2);
       }
       ctx.fill();
+    }
+    if (config.showCanvas) {
+      canvas.style.backgroundColor = "rebeccapurple"
+    } else {
+      canvas.style.backgroundColor = ""
+    }
+    if (config.showMouse) {
+      ctx.arc(mouseX, mouseY, 4, 0, 2*Math.PI)
+      ctx.fill()
     }
   }
 }
