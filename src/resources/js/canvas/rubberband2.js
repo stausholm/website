@@ -204,19 +204,17 @@ function renderCanvas() {
   // rAF
   rafID = requestAnimationFrame(renderCanvas);
 
-  //console.log('loop')
   if (init === 1) {
-    // perform initial animation
-    console.log('init')
-
+    // perform bounce animation on initial page load
     mouseDirectionY = 1
-    mouseY = 140
+    mouseY = canvas.height/2 + 40 // 40 is just some random number that made a big enough bounce
     mouseX = canvas.width/2
-    // init = 2 // TODO: make work
-  } else if (init === 2) {
-    console.log('init2')
+    init++
+  } else if (init === 10) {
     mouseLeave()
-    init = 3
+    init++
+  } else if (init < 10) {
+    init++
   }
 
 
