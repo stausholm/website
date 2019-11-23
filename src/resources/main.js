@@ -6,7 +6,6 @@ import renderFooter from './js/footer'
 
 import switchTheme from './js/themeswitcher'
 
-// import rubberband from './js/canvas/rubberband'
 import rubberband2 from './js/canvas/rubberband2'
 // import blast from './js/canvas/blast'
 

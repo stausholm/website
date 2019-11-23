@@ -6,10 +6,10 @@ let points = [];
 let rafID = null;
 
 const config = {
-  totalPoints: 6,
-  viscosity: 20,
+  totalPoints: 4,
+  viscosity: 14,
   mouseDist: 70,
-  damping: 0.15,
+  damping: 0.1,
   // color: '#f21b5f',
   color: `rgb(${window.getComputedStyle(document.documentElement).getPropertyValue('--color-secondary')})`,
   defaultSpacing: parseFloat(getComputedStyle(document.documentElement).fontSize),
