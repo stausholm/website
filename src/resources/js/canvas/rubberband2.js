@@ -12,11 +12,12 @@ const config = {
   damping: 0.15,
   // color: '#f21b5f',
   color: `rgb(${window.getComputedStyle(document.documentElement).getPropertyValue('--color-secondary')})`,
+  defaultSpacing: parseFloat(getComputedStyle(document.documentElement).fontSize),
 
   // DEBUG
-  showIndicators: true,
-  showMouse: true,
-  showCanvas: true
+  showIndicators: false,
+  showMouse: false,
+  showCanvas: false
 };
 
 const DEBUG = true
@@ -106,12 +107,12 @@ canvas.ontouchmove = function(e) {
 canvas.ontouchstart = function(e) {
   // don't prevent scrolling page if touching outside line boundaries
   const rect = e.target.getBoundingClientRect();
-  const x = e.targetTouches[0].clientX - rect.left; // TODO: x start boundaries
+  const x = e.targetTouches[0].clientX - rect.left; // TODO: x start boundaries (config.defaultSpacing), or is it not needed as we then also have a larger touch target on x axis?
   const y = e.targetTouches[0].clientY - rect.top;
 
   const touchStartBoundaries = {
-    top: canvas.height/2 - 20,
-    bottom: canvas.height/2 + 20
+    top: canvas.height/2 - config.defaultSpacing,
+    bottom: canvas.height/2 + config.defaultSpacing
   }
   if (y > touchStartBoundaries.top && y < touchStartBoundaries.bottom) {
     // prevent page from scrolling
@@ -182,12 +183,14 @@ function initCanvas() {
 
   // Add points
   points = [];
-  const gap = (canvas.width / (config.totalPoints - 1));
+  const gap = ((canvas.width - 2*config.defaultSpacing) / (config.totalPoints - 1));
   const pointY = canvas.height / 2;
+  const offset = config.defaultSpacing
 
   for (let i = 0; i <= config.totalPoints - 1; i++) {
-    points.push(new Point(i * gap, pointY, canvas));
+    points.push(new Point(i * gap + offset, pointY, canvas));
   }
+  window.points = points
 
   init = 1
 
@@ -263,8 +266,9 @@ function renderCanvas() {
   ctx.strokeStyle = config.color;
   ctx.lineWidth = 5;
   ctx.beginPath();
+  ctx.lineCap = 'round';
 
-  ctx.moveTo(0, canvas.height / 2);
+  ctx.moveTo(0 + config.defaultSpacing, canvas.height / 2);
 
   for (let i = 0; i <= config.totalPoints - 1; i++) {
     const p = points[i];
