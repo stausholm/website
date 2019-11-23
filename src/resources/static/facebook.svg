@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" x="0px" y="0px" viewBox="0 0 512 512" style="enable-background:new 0 0 512 512;" xml:space="preserve">
+<mask id="facebookMask">
+  <rect x="0" y="0" width="512" height="512" fill="white"/>
+  <g transform="translate(256 256) scale(0.65) translate(-256 -256)" fill="black">
+    <path d="M295.5,167.8v-44.1c0-6.6,0.3-11.8,0.9-15.4c0.6-3.6,2-7.2,4.2-10.7c2.2-3.5,5.7-6,10.6-7.3  c4.9-1.3,11.3-2,19.4-2h44.1V0h-70.5c-40.8,0-70.1,9.7-87.9,29c-17.8,19.4-26.7,47.9-26.7,85.6v53.1h-52.8V256h52.8v256h105.9V256  H366l9.3-88.2H295.5z"/>
+  </g>
+</mask>
+  <circle cx="256" cy="256" r="256" mask="url(#facebookMask)" />
+</svg>
