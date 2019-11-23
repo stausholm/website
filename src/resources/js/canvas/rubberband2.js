@@ -20,7 +20,7 @@ const config = {
   showCanvas: false
 };
 
-const DEBUG = true
+const DEBUG = window.location.href.indexOf('debug=1') != -1
 let debugFunc = null
 
 
@@ -190,7 +190,6 @@ function initCanvas() {
   for (let i = 0; i <= config.totalPoints - 1; i++) {
     points.push(new Point(i * gap + offset, pointY, canvas));
   }
-  window.points = points
 
   init = 1
 
@@ -323,6 +322,7 @@ if(DEBUG) {
     gui.add(config, 'viscosity', 10, 500);
     gui.add(config, 'mouseDist', 20, 400);
     gui.add(config, 'damping', 0.01, 0.5);
+    gui.add(config, 'defaultSpacing', 0, 50);
     gui.addColor(config, 'color');
   
     controller.onChange(function() {
