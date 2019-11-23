@@ -302,6 +302,31 @@ resizeHandler()
 
 
 
+// make it possible to update config with custom events
+// window.addEventListener('updateConfig', e => {
+//   Object.keys(e.detail).forEach(key => {
+//     config[key] = e.detail[key]
+//   })
+// })
+// window.updateConfig = config => {
+//   window.dispatchEvent(new CustomEvent('updateConfig', {
+//     detail: {
+//       ...config,
+//       color: `rgb(${window.getComputedStyle(document.documentElement).getPropertyValue('--color-secondary')})`,
+//       defaultSpacing: parseFloat(getComputedStyle(document.documentElement).fontSize)
+//     }
+//   }))
+// }
+
+
+// auto update color on themeswitch
+window.addEventListener('switchTheme', e => {
+  config.color = `rgb(${window.getComputedStyle(document.documentElement).getPropertyValue('--color-secondary')})`
+})
+
+
+
+
 /**
  * Debug
  */

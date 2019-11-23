@@ -38,6 +38,8 @@ const switchTheme = (key) => {
     document.body.classList.remove(`theme-${themeKey}`)
   })
   document.body.classList.add(`theme-${key}`)
+
+  window.dispatchEvent(new CustomEvent('switchTheme'))
 }
 
 const supportsCssVariables = () => {
