@@ -6,6 +6,10 @@ import renderFooter from './js/footer'
 
 import switchTheme from './js/themeswitcher'
 
+import toasts from './js/toasts'
+import isIE from './js/detectIE'
+
+
 import rubberband2 from './js/canvas/rubberband2'
 // import blast from './js/canvas/blast'
 
@@ -13,6 +17,12 @@ const init = () => {
   renderPosts('.posts')
   renderAltPosts('.posts--alt ul')
   renderFooter('footer nav')
+
+  window.toasts = new toasts()
+
+  if (isIE()) {
+    window.toasts.add('Achievement unlocked: View this website in a dead browser 🎉')
+  }
 }
 
 init()
