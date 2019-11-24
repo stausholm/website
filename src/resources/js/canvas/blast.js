@@ -79,6 +79,12 @@ BlastParticle.prototype.draw = function() {
   // ctx.fillStyle = this.color
   // ctx.fill()
   // ctx.closePath()
+  
+  // ctx.beginPath()
+  // ctx.arc(this.x, this.y, this.size, 0, 2*Math.PI)
+  // ctx.fillStyle = this.color
+  // ctx.fill()
+  // ctx.closePath()
 }
 
 BlastParticle.prototype.update = function() {

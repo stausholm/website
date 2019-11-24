@@ -7,7 +7,7 @@
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>Document</title>
   <meta name="theme-color" content="#FF4CA8">
-  <link href="https://fonts.googleapis.com/css?family=Share+Tech+Mono|Source+Sans+Pro:300,400,600,700" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,700" rel="stylesheet" />
 </head>
 <body>
   <header>
@@ -19,32 +19,33 @@
     </nav>
   </header>
   
-  <main class="content-wrapper">
-    <div class="hero-container">
-      <h1>Title</h1>
-      <p>
-        This is a descriptive description describing the page's content
-        descriptively.
-      </p>
-      <div class="divider">
-        <div class="canvas-wrapper">
-          <canvas id="canvas">
-            // TODO: make divider "stick" to cursor and also be draggable. Both ends cannot be moved. should also rubberband when scrolling page
-            // TODO: divider turns into 2D breakout game
-            // TODO: divider turns into 2D snake game
-            // TODO: divider turns into floor for 2D sidescrolling game
-            // TODO: leaderboards
-            // TODO: mouse/touch controls
-            // TODO: pause button
-            // TODO: celebration confetti
-          </canvas>
+  <main class="">
+    <div class="hero-container content-wrapper">
+      <div class="hero-content">
+        <h1>Title</h1>
+        <p class="hero-sub">
+          This is a descriptive description describing the page's content
+          descriptively.
+        </p>
+        <div class="divider">
+          <div class="canvas-wrapper">
+            <canvas id="canvas">
+              // TODO: divider turns into 2D breakout game
+              // TODO: divider turns into 2D snake game
+              // TODO: divider turns into floor for 2D sidescrolling game
+              // TODO: leaderboards
+              // TODO: mouse/touch controls
+              // TODO: pause button
+              // TODO: celebration confetti
+            </canvas>
+          </div>
         </div>
       </div>
     </div>
+    
+    <div class="posts content-wrapper" id="projects"></div>
 
-    <div class="posts" id="projects"></div>
-
-    <div class="posts--alt">
+    <div class="posts--alt content-wrapper">
       <h2 id="more-projects">More projects</h2>
       <ul>
       </ul>

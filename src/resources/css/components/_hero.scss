@@ -11,21 +11,23 @@
     letter-spacing: .0175em;
   }
 
-  > p {
+  .hero-sub {
     margin: .5em 0;
     max-width: 30rem;
     font-size: 1.5rem;
     line-height: 1.35;
   }
 
+  h1, .hero-sub {
+    transition: 300ms ease;
+  }
+
   .divider {
     margin-top: 5rem;
     width: 170px;
     height: 5px;
-    // background-color: $color-secondary;
-    // background-color: rgb(var(--color-secondary));
-    // background-color: yellow;
     position: relative;
+    //transition: width 300ms ease;
 
     .canvas-wrapper {
       position: absolute;
@@ -33,6 +35,27 @@
       left: -1rem;
       right: -1rem;
       height: 10rem;
+
+      canvas {
+        transition: width 300ms ease;
+        transition-delay: 400ms;
+      }
+    }
+  }
+
+  &.gameboard {
+    // max-width: 100%;
+    // padding: 0;
+
+    .hero-content {
+      h1, .hero-sub {
+        opacity: 0;
+        transform: translateY(1rem);
+      }
+
+      .divider {
+        width: 100%;
+      }
     }
   }
 }

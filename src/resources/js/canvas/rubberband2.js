@@ -17,7 +17,11 @@ const config = {
   // DEBUG
   showIndicators: false,
   showMouse: false,
-  showCanvas: false
+  showCanvas: false,
+
+
+  // gameboard
+  gamemode: false
 };
 
 const DEBUG = window.location.href.indexOf('debug=1') != -1
@@ -180,6 +184,10 @@ function initCanvas() {
   // Resize canvas
   canvas.width = parent.offsetWidth;
   canvas.height = parent.offsetHeight;
+
+  // gameboard
+  canvas.style.width = parent.offsetWidth + 'px';
+  canvas.style.height = parent.offsetHeight + 'px';
 
   // Add points
   points = [];
@@ -354,6 +362,14 @@ if(DEBUG) {
       cancelAnimationFrame(rafID);
       initCanvas();
     });
+
+    // gamemode
+    const gm = gui.add(config, 'gamemode');
+    gm.onChange(function() {
+      cancelAnimationFrame(rafID);
+      document.querySelector('.hero-container').classList.toggle('gameboard')
+      initCanvas();
+    })
   })
 
   debugFunc = () => {
