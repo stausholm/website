@@ -30,13 +30,13 @@ body {
 @keyframes reveal {
   0% {opacity: 0; transform: translateY(10px);}
   33% {opacity: 0; transform: translateY(10px);}
-  100% {opacity: 100; transform: translateY(0);}
+  100% {opacity: 1; transform: translateY(0);}
 }
 
 @keyframes fade {
   0% {opacity: 0; }
   33% {opacity: 0; }
-  100% {opacity: 100; }
+  100% {opacity: 1; }
 }
 
 ::selection {
