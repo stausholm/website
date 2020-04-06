@@ -8,6 +8,7 @@ import switchTheme from './js/themeswitcher'
 
 import toasts from './js/toasts'
 import isIE from './js/detectIE'
+import theNet from './js/theNet'
 
 
 import rubberband2 from './js/canvas/rubberband2'
@@ -17,6 +18,7 @@ const init = () => {
   renderPosts('.posts')
   renderAltPosts('.posts--alt ul')
   renderFooter('footer nav')
+  theNet('#the-net', '//pi.mortenstausholm.dk')
 
   window.toasts = new toasts()
 
