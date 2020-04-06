@@ -11,7 +11,7 @@ const config = {
   mouseDist: 70,
   damping: 0.1,
   // color: '#f21b5f',
-  color: `rgb(${window.getComputedStyle(document.documentElement).getPropertyValue('--color-secondary')})`,
+  color: window.getComputedStyle(document.documentElement).getPropertyValue('--color-secondary').trim(),
   defaultSpacing: parseFloat(getComputedStyle(document.documentElement).fontSize),
 
   // DEBUG
@@ -26,7 +26,6 @@ const config = {
 
 const DEBUG = window.location.href.indexOf('debug=1') != -1
 let debugFunc = null
-
 
 
 /**
@@ -271,7 +270,7 @@ function renderCanvas() {
 
   // Draw shape
   ctx.strokeStyle = config.color;
-  ctx.lineWidth = 5;
+  ctx.lineWidth = 6;
   ctx.beginPath();
   ctx.lineCap = 'round';
 
@@ -329,7 +328,7 @@ resizeHandler()
 
 // auto update color on themeswitch
 window.addEventListener('switchTheme', e => {
-  config.color = `rgb(${window.getComputedStyle(document.documentElement).getPropertyValue('--color-secondary')})`
+  config.color = window.getComputedStyle(document.documentElement).getPropertyValue('--color-secondary')
 })
 
 

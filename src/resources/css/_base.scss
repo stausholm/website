@@ -13,9 +13,6 @@ body {
   letter-spacing: .0135em;
   -webkit-font-smoothing: antialiased;
   overflow: visible;
-  transition: background-color .3s ease;
-  background-color: $color-primary;
-  background-color: var(--color-primary);
 }
 
 .content-wrapper {
@@ -25,6 +22,35 @@ body {
   margin: 0 auto;
   padding: 0 $default-spacing;
   animation: reveal .4s ease-in-out;
+}
+
+.page {
+  // transition: background-color .3s ease;
+  transition: background-color .3s ease, transform 1s cubic-bezier(0.2, 1, 0.3, 1) 0s;
+  background-color: $color-primary;
+  background-color: var(--color-primary);
+  position: relative;
+
+  &-move {
+    transition: background-color .3s ease, transform 1s cubic-bezier(0.2, 1, 0.3, 1) 0s, box-shadow .6s cubic-bezier(0.2, 1, 0.3, 1) .1s;
+    transform: translate3d(0px, 75vh, -150px);
+    box-shadow: 0 -65px 0 -35px rgba($color-primary, .4), 0 -125px 0 -70px rgba($color-primary, .4), 0 -180px 0 -105px rgba($color-primary, .4), 0 0 0 4px rgba($color-primary, .4);
+    box-shadow: 0 -65px 0 -35px rgba(var(--color-primary--rgb), .4), 0 -125px 0 -70px rgba(var(--color-primary--rgb), .4), 0 -180px 0 -105px rgba(var(--color-primary--rgb), .4), 0 0 0 4px rgba(var(--color-primary--rgb), .4);
+    
+    @media screen and (max-width: 767px) {
+      box-shadow: 0 -35px 0 -15px rgba($color-primary, .4), 0 -68px 0 -35px rgba($color-primary, .4), 0 -99px 0 -55px rgba($color-primary, .4), 0 0 0 4px rgba($color-primary, .4);
+      box-shadow: 0 -35px 0 -15px rgba(var(--color-primary--rgb), .4), 0 -68px 0 -35px rgba(var(--color-primary--rgb), .4), 0 -99px 0 -55px rgba(var(--color-primary--rgb), .4), 0 0 0 4px rgba(var(--color-primary--rgb), .4);
+    }
+  }
+}
+.page-wrapper {
+  transition: background-color .3s ease;
+  background-color: $color-secondary;
+  background-color: var(--color-secondary);
+  width: 100%;
+  position: relative;
+  perspective: 1200px;
+  perspective-origin: 50% 0px;
 }
 
 @keyframes reveal {
@@ -41,13 +67,29 @@ body {
 
 ::selection {
   background: $color-secondary;
-  background: rgb(var(--color-secondary));
+  background: var(--color-secondary);
   color: $color-primary;
   color: var(--color-primary);
 }
 ::-moz-selection {
   background: $color-secondary;
-  background: rgb(var(--color-secondary));
+  background: var(--color-secondary);
   color: $color-primary;
   color: var(--color-primary);
+}
+
+#the-net {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  color: $color-secondary;
+  color: var(--color-secondary);
+
+  @media screen and (max-width: 767px) {
+    display: none !important;
+  }
+}
+
+.no-tab-highlight {
+  -webkit-tap-highlight-color:  transparent;
 }

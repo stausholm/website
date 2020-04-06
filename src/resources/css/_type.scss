@@ -11,7 +11,7 @@ body {
 
 a {
   color: $color-secondary;
-  color: rgb(var(--color-secondary));
+  color: var(--color-secondary);
   text-decoration: none;
   transition: color .2s;
 

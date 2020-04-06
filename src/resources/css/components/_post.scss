@@ -4,7 +4,7 @@
   a {
     text-decoration: none;
     color: $color-secondary;
-    color: rgb(var(--color-secondary));
+    color: var(--color-secondary);
     transition: color .2s;
     display: inline-block;
 
@@ -46,7 +46,7 @@
         
         &:hover {
           color: $color-secondary;
-          color: rgb(var(--color-secondary));
+          color: var(--color-secondary);
 
           .headtext, .subtext {
             &::after {
@@ -85,7 +85,7 @@
             width: calc(100% + #{$default-spacing/2});
             height: 94%;
             background-color: $color-secondary;
-            background-color: rgb(var(--color-secondary));
+            background-color: var(--color-secondary);
             opacity: .25;
             z-index: -1;
             transform: scaleX(0);
@@ -124,7 +124,7 @@
             transform: translateX(-100%);
             opacity: 0;
             fill: $color-secondary;
-            fill: rgb(var(--color-secondary));
+            fill: var(--color-secondary);
           }
           
           .inactive {
@@ -141,6 +141,14 @@
             .inactive {
               transform: rotate(-45deg);
             }
+          }
+        }
+
+        @media screen and (max-width: 767px) {
+          -webkit-tap-highlight-color:  transparent;
+
+          &:active {
+            background-color: rgba(var(--color-secondary--rgb), 0.05);
           }
         }
       }

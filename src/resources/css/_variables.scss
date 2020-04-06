@@ -30,8 +30,10 @@ $text:                     #282066;
 // scss variables are fallback for browsers that don't support css variables
 // variables are used in themeswitcher.js
 :root {
-  --color-secondary: 255, 76, 168;//#FF4CA8;
+  --color-secondary: #FF4CA8;
+  --color-secondary--rgb: 255, 76, 168;
   --color-secondary-light: #FF4CA8;
   --color-primary: #211B3B;
+  --color-primary--rgb: 33, 27, 59;
   --text: #fff;
 }

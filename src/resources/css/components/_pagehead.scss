@@ -1,0 +1,80 @@
+.page-head {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  width: 100%;
+  height: 50vh;
+
+  &__inner {
+    color: $color-primary;
+    color: var(--color-primary);
+    opacity: 0;
+    transform: translate3d(0px, 50px, 0px);
+    transition: opacity .7s cubic-bezier(0.2, 1, 0.3, 1) 0s, transform .6s 0s;
+  }
+
+  .close {
+    cursor: pointer;
+    margin: 0;
+    padding: 0;
+    border: 0;
+    background: none;
+    text-decoration: none;
+    outline: none;
+    pointer-events: none;
+    position: absolute;
+    top: $default-spacing*2;
+    right: $default-spacing*2;
+    display: block;
+    color: rgb(255, 255, 255);
+    z-index: 2;
+    opacity: 0;
+    transform: scale3d(0.8, 0.8, 1);
+    transition: opacity 0.5s ease 0s, transform 0.5s ease 0s;
+    width: 40px;
+    height: 40px;
+    &::before, &::after {
+      content: "";
+      width: 2px;
+      height: 40px;
+      background-color: $color-primary;
+      background-color: var(--color-primary);
+      display: block;
+      position: absolute;
+      top: calc(50% - 20px);
+      left: calc(50% - 1px);
+      transform: rotate(45deg);
+    }
+    &::before {
+      transform: rotate(-45deg);
+    }
+
+    @media screen and (max-width: 767px) {
+      top: $default-spacing;
+      right: $default-spacing;
+    }
+  }
+}
+
+body.page-moved {
+  overflow: hidden;
+
+  .page-head {
+
+    &__inner {
+      opacity: 1;
+      transform: translate3d(0px, 0px, 0px);  
+    }
+
+    .close {
+      opacity: 1;
+      transform: scale3d(1, 1, 1);
+      pointer-events: all;
+    }
+  }
+}

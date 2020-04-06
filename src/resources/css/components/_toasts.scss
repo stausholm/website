@@ -24,7 +24,7 @@
   min-height: 50px;
   min-width: 100%;
   background-color: $color-secondary;
-  background-color: rgb(var(--color-secondary));
+  background-color: var(--color-secondary);
   padding: $default-spacing/2 $default-spacing;
   font-size: .75rem;
   color: $color-primary;

@@ -10,65 +10,73 @@
   <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,700" rel="stylesheet" />
 </head>
 <body>
-  <header>
-    <nav class="header-nav">
-      <a href="#" onclick="switchTheme('blue')" title="highlighted projects">01.</a>
-      <a href="#" onclick="switchTheme('green')" title="Other projects">02.</a>
-      <a href="#" onclick="switchTheme('red')" title="Links to other places and contact">03.</a>
-      <a href="#" onclick="switchTheme('purple')" class="active" title="Contact info">04.</a>
-    </nav>
-  </header>
-  
-  <main class="">
-    <div class="hero-container content-wrapper">
-      <div class="hero-content">
-        <h1>Title</h1>
-        <p class="hero-sub">
-          This is a descriptive description describing the page's content
-          descriptively.
-        </p>
-        <div class="divider">
-          <div class="canvas-wrapper">
-            <canvas id="canvas">
-              // TODO: divider turns into 2D breakout game
-              // TODO: divider turns into 2D snake game
-              // TODO: divider turns into floor for 2D sidescrolling game
-              // TODO: leaderboards
-              // TODO: mouse/touch controls
-              // TODO: pause button
-              // TODO: celebration confetti
-            </canvas>
-          </div>
+  <div class="page-wrapper">
+    <aside class="page-head">
+      <button class="close" aria-label="close overlay"></button>
+      <div class="page-head__inner">
+        <div class="content-wrapper">
+          yoyoooo
         </div>
       </div>
+    </aside>
+    <div class="page">
+      <header>
+        <nav class="header-nav">
+        </nav>
+      </header>
+      
+      <main class="">
+        <div class="hero-container content-wrapper">
+          <div class="hero-content">
+            <h1>Title</h1>
+            <p class="hero-sub">
+              This is a descriptive description describing the page's content
+              descriptively.
+            </p>
+            <div class="divider">
+              <div class="canvas-wrapper">
+                <canvas id="canvas">
+                  // TODO: divider turns into 2D breakout game
+                  // TODO: divider turns into 2D snake game
+                  // TODO: divider turns into floor for 2D sidescrolling game
+                  // TODO: leaderboards
+                  // TODO: mouse/touch controls
+                  // TODO: pause button
+                  // TODO: celebration confetti
+                </canvas>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <div class="posts content-wrapper" id="projects"></div>
+  
+        <div class="posts--alt content-wrapper">
+          <h2 id="more-projects">More projects</h2>
+          <ul>
+          </ul>
+        </div>
+      </main>
+  
+      <footer id="contact">
+        <div class="content-wrapper">
+          <nav class="row">
+          </nav>
+  
+          <div class="small-text">
+            <p>
+              <a href="mailto:morten@mortenstausholm.dk?subject=Hello there" title="write me">morten@mortenstausholm.dk</a>
+              <span class="divider" aria-hidden="true">|</span>
+              <a href="tel:+4530265087" title="give a call">30 26 50 87</a>
+            </p>
+            <p>Copyright whenever. This is <a href="https://github.com/stausholm/website">open source.</a></p>
+          </div>
+        </div>
+      </footer>
+  
+      <p id="the-net"></p>
     </div>
-    
-    <div class="posts content-wrapper" id="projects"></div>
-
-    <div class="posts--alt content-wrapper">
-      <h2 id="more-projects">More projects</h2>
-      <ul>
-      </ul>
-    </div>
-  </main>
-
-  <footer id="contact">
-    <div class="content-wrapper">
-      <nav class="row">
-      </nav>
-
-      <div class="small-text">
-        <p>
-          <a href="mailto:morten@mortenstausholm.dk?subject=Hello there" title="write me">morten@mortenstausholm.dk</a>
-          <span class="divider" aria-hidden="true">|</span>
-          <a href="tel:+4530265087" title="give a call">30 26 50 87</a>
-        </p>
-        <p>Copyright whenever. This is <a href="https://github.com/stausholm/website">open source.</a></p>
-      </div>
-    </div>
-  </footer>
-
-  <p id="the-net"></p>
+  </div>
   <script src="./resources/main.js"></script>
 </body>
 </html>
