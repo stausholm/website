@@ -10,6 +10,7 @@ import toasts from './js/toasts'
 import isIE from './js/detectIE'
 import theNet from './js/theNet'
 import initNav from './js/nav'
+import initGameSelector from './js/game-selector'
 
 
 import rubberband2 from './js/canvas/rubberband2'
@@ -21,6 +22,7 @@ const init = () => {
   renderFooter('footer nav')
   theNet('#the-net', '//pi.mortenstausholm.dk')
   initNav()
+  initGameSelector()
 
   window.toasts = new toasts()
 

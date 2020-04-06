@@ -32,6 +32,10 @@ body {
   position: relative;
 
   &-move {
+    * {
+      pointer-events: none;  
+    }
+
     transition: background-color .3s ease, transform 1s cubic-bezier(0.2, 1, 0.3, 1) 0s, box-shadow .6s cubic-bezier(0.2, 1, 0.3, 1) .1s;
     transform: translate3d(0px, 75vh, -150px);
     box-shadow: 0 -65px 0 -35px rgba($color-primary, .4), 0 -125px 0 -70px rgba($color-primary, .4), 0 -180px 0 -105px rgba($color-primary, .4), 0 0 0 4px rgba($color-primary, .4);

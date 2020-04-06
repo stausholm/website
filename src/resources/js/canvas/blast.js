@@ -1,16 +1,31 @@
 import {random} from '../utils'
 
-const canvas = document.getElementById('canvas')
+const canvas = document.getElementById('game')
 const ctx = canvas.getContext('2d')
 
 let blast;
 let count = 0;
 
+const mouse = {
+  x: 0,
+  y: 0
+}
+function mouseClick(e) {
+  mouse.x = e.offsetX;
+  mouse.y = e.offsetY;
+
+  blast = new Blast(mouse.x, mouse.y, 'white', undefined, 6)
+}
+canvas.addEventListener('click', mouseClick);
+
+
 
 const init = () => {
   console.log('init blast')
+  canvas.width = canvas.parentNode.offsetWidth;
+  canvas.height = canvas.parentNode.offsetHeight;
 
-  blast = new Blast(100, 100, 'white', undefined, 6)
+  //blast = new Blast(100, 100, 'white', undefined, 6)
   animate()
 }
 
@@ -104,4 +119,4 @@ BlastParticle.prototype.update = function() {
   this.draw()
 }
 
-export default init()
+export default init

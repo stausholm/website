@@ -20,13 +20,8 @@ const nav = [
     title: 'Go to 02',
     init: function(el) {
       switchTheme('red')
-      
-      document.body.classList.add('page-moved')
-      document.querySelector('.page').classList.add('page-move')
     },
     exit: function(el, initiatorEl) {
-      document.body.classList.remove('page-moved')
-      document.querySelector('.page').classList.remove('page-move')
     }
   },
   {
@@ -35,12 +30,8 @@ const nav = [
     title: 'Go to 03',
     init: function(el) {
       switchTheme('green')
-      document.body.classList.add('page-moved')
-      document.querySelector('.page').classList.add('page-move')
     },
     exit: function(el, initiatorEl) {
-      document.body.classList.remove('page-moved')
-      document.querySelector('.page').classList.remove('page-move')
     }
   },
   {
@@ -49,11 +40,9 @@ const nav = [
     title: 'Go to 04',
     init: function(el) {
       switchTheme('blue')
-
     },
     exit: function(el, initiatorEl) {
-      document.body.classList.remove('page-moved')
-      document.querySelector('.page').classList.remove('page-move')
+      
     }
   }
 ]
@@ -86,12 +75,5 @@ export default function initNav() {
     header.appendChild(el)
   })
 
-  const pageHeadClose = document.querySelector('.page-head .close')
-  pageHeadClose.addEventListener('click', e => {
-    const currentActive = document.querySelector('.header-nav a.active')
-    const currentActiveNavItem = nav.find(x => x.id === parseInt(currentActive.getAttribute('data-nav-id')))
-      if (currentActiveNavItem && currentActiveNavItem.exit) {
-        currentActiveNavItem.exit(currentActive, pageHeadClose)
-      }
-  })
+
 }

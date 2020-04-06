@@ -331,6 +331,13 @@ window.addEventListener('switchTheme', e => {
   config.color = window.getComputedStyle(document.documentElement).getPropertyValue('--color-secondary')
 })
 
+// set gamemode
+window.addEventListener('gameBoardToggle', e => {
+  cancelAnimationFrame(rafID);
+  document.querySelector('.hero-container').classList.toggle('gameboard')
+  initCanvas();
+})
+
 
 
 

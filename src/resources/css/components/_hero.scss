@@ -25,13 +25,13 @@
   .divider {
     margin-top: 5rem;
     width: 170px;
-    height: 5px;
+    height: 6px;
     position: relative;
     //transition: width 300ms ease;
 
     .canvas-wrapper {
       position: absolute;
-      top: calc(-5rem + 2.5px);
+      top: calc(-5rem + 3px);
       left: -1rem;
       right: -1rem;
       height: 10rem;
@@ -39,6 +39,22 @@
       canvas {
         transition: width 300ms ease;
         transition-delay: 400ms;
+      }
+    }
+  }
+
+  .hero-content {
+    position: relative;
+
+    .game-selector {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: $default-spacing*3;
+
+      @media screen and (max-width: 767px) {
+        bottom: 0;
       }
     }
   }
@@ -51,10 +67,25 @@
       h1, .hero-sub {
         opacity: 0;
         transform: translateY(1rem);
+        user-select: none;
       }
 
       .divider {
         width: 100%;
+      }
+
+      // .game-selector {
+      //   background-color: red;
+      // }
+    }
+  }
+
+  &:not(.gameboard) { // done this way as chrome was not liking hovering an element inside another element that has transform property set, even if it's set to 0
+    .game-selector {
+      user-select: none;
+      pointer-events: none;
+      .game-icon {
+        transform: translateY($default-spacing*3);
       }
     }
   }
