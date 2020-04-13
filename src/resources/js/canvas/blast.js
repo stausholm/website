@@ -1,7 +1,8 @@
 import {random} from '../utils'
 
-const canvas = document.getElementById('game')
-const ctx = canvas.getContext('2d')
+let canvas = null
+let ctx = null
+let rafID = null
 
 let blast;
 let count = 0;
@@ -16,21 +17,39 @@ function mouseClick(e) {
 
   blast = new Blast(mouse.x, mouse.y, 'white', undefined, 6)
 }
-canvas.addEventListener('click', mouseClick);
 
+
+const game = () => {
+  return {
+    init,
+    exit
+  }
+}
 
 
 const init = () => {
-  console.log('init blast')
-  canvas.width = canvas.parentNode.offsetWidth;
-  canvas.height = canvas.parentNode.offsetHeight;
+  cancelAnimationFrame(rafID)
+  console.log('init blast', canvas)
+  canvas = document.getElementById('game')
+  canvas.width = canvas.parentNode.offsetWidth
+  canvas.height = canvas.parentNode.offsetHeight
+  ctx = canvas.getContext('2d')
+  canvas.addEventListener('click', mouseClick)
 
   //blast = new Blast(100, 100, 'white', undefined, 6)
   animate()
 }
 
+const exit = () => {
+  console.log('exit blast')
+  cancelAnimationFrame(rafID)
+  canvas = null
+  ctx = null
+
+}
+
 const animate = () => {
-  requestAnimationFrame(animate)
+  rafID = requestAnimationFrame(animate)
   ctx.clearRect(0, 0, canvas.width, canvas.height)
 
   if (blast && blast.isActive) {
@@ -119,4 +138,4 @@ BlastParticle.prototype.update = function() {
   this.draw()
 }
 
-export default init
+export default game()
